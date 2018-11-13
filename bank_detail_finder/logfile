@@ -1,0 +1,10 @@
+2018-11-13 22:26:55.891 IST [14606] LOG:  listening on IPv6 address "::1", port 5432
+2018-11-13 22:26:55.908 IST [14606] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-11-13 22:26:56.032 IST [14606] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-11-13 22:26:56.238 IST [14608] LOG:  database system was shut down at 2018-11-13 22:26:46 IST
+2018-11-13 22:26:56.275 IST [14606] LOG:  database system is ready to accept connections
+2018-11-13 22:30:43.724 IST [14606] LOG:  received fast shutdown request
+2018-11-13 22:30:43.744 IST [14606] LOG:  aborting any active transactions
+2018-11-13 22:30:43.788 IST [14606] LOG:  worker process: logical replication launcher (PID 14614) exited with exit code 1
+2018-11-13 22:30:43.788 IST [14609] LOG:  shutting down
+2018-11-13 22:30:43.866 IST [14606] LOG:  database system is shut down
