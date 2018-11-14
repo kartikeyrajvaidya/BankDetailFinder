@@ -1,6 +1,122 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-			   {% block codeSearch_content %}{% endblock %}
+			   {% block bank_finder_content %}{% endblock %}
 </div>
+<script>
+
+     $(document).ready(function(){
+
+
+        $(function() {
+            $( "#bank_name" ).autocomplete({
+               source: "/bankfinder/getbanks",
+               minLength: 3,
+
+            });
+         });
+
+        document.getElementById("response_card").hidden = true;
+
+        $("#get_branch_details").click(function(){
+            console.log("CLICKKEEEEEEEEED")
+
+
+            ifsc_code = document.getElementById("ifsc_code_inp").value;
+            console.log(ifsc_code)
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                      console.log(this.responseText);
+                      var res=JSON.parse(this.responseText);
+                      // $("#response_text").attr("href", "http://"+res['short_url']);
+
+                      document.getElementById("response_card").hidden = false;
+                      document.getElementById('data_title').innerHTML=res["bank"]["name"] ;
+                      detail_str =  "City : " + res["city"] + "<br>" + "District : " + res["district"] + "<br>"
+                      detail_str = detail_str + "State : " + res["state"] + "<br>" + "Address : " + res["address"] + "<br>"
+
+                      detail_str = detail_str + "Branch : " + res["branch"] + "<br>" + "IFSC Code: " + res["ifsc"] + "<br>"
+
+                      document.getElementById('data_detail').innerHTML= detail_str ;
+
+                      var maps_url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(res['address']+ ", " + res['city']);
+                      //var encoded = encodeURIComponent(maps_url);
+                      $("#open_in_maps").attr("href", maps_url);
+
+
+
+                }else{
+
+                        document.getElementById("response_card").hidden = true;
+                        var res=JSON.parse(this.responseText);
+
+                        $.noConflict();
+                        $.alert({
+                            title: 'Request could not be completed!',
+                            content: res['message'] + "<br> Response Status : " + this.status,
+                        });
+                }
+            };
+            // var parm='ifsc_code=' + long_url;
+            xhttp.open("GET", "/bankfinder/branch/"+ifsc_code, false);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send();
+        });
+         $("#get_all_branches").click(function(){
+            console.log("CLICKKEEEEEEEEED")
+
+
+            city = document.getElementById("city").value;
+            console.log(city)
+            bank_name = document.getElementById("bank_name").value;
+            console.log(bank_name)
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+
+                    document.getElementById("all_branches_list").hidden = false;
+                    var res=JSON.parse(this.responseText);
+
+                    var response_html_content = "";
+                    $.each(res, function (i, v) {
+                                        //list += '<li class="page" id="'+i+'">' + '<a>' + v.name + '</a></li>'
+                        console.log(v);
+                        var item_details = "Branch : " + v['branch'] + "<br>" + "IFSC Code : " + v['ifsc'] + "<br>"  ;            //,, state
+                        item_details = item_details + "District : " + v['district'] + "<br>" + "Address : " + v['address'] + "<br>";
+
+                        var list_item= '<li class="list-group-item">' + item_details + '</li>' ;
+
+                        response_html_content = response_html_content + list_item;
+
+                    });
+
+                    document.getElementById('all_branches_list').innerHTML= response_html_content ;
+
+
+
+                }else{
+
+                    document.getElementById("all_branches_list").hidden = true;
+                    var res=JSON.parse(this.responseText);
+
+
+                    $.noConflict();
+                    $.alert({
+                        title: 'Request could not be completed!',
+                        content: res['message'] + "<br> Response Status : " + this.status,
+                    });
+
+                }
+            };
+            var param_string='bank_name=' + bank_name + '&city=' + city;
+            xhttp.open("GET", "/bankfinder/branches/?"+param_string , false);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send();
+         });
+     });
+</script>
 {% endblock %}

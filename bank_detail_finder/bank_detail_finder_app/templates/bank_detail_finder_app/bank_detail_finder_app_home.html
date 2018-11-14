@@ -1,4 +1,153 @@
 {% extends "bank_detail_finder_app/bank_detail_finder_app_base.html" %}
-{% block codeSearch_content %}
-<h1>Hey Kartikey</h1>
+{% block bank_finder_content %}
+
+
+
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active " data-toggle="tab" href="#branches_tab">Branches</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " data-toggle="tab" href="#ifsc_tab">IFSC</a>
+      </li>
+
+
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+
+      <div class="tab-pane container active " id="branches_tab">
+
+
+          <br>
+
+           <div class="row">
+
+                <div class="col-md-6">
+                      <label for="bank_name">Enter Bank name (enter min 3 letters for suggestions) : </label>
+                      <input type="text" class="form-control" id="bank_name" >
+                </div>
+
+           </div>
+          <br>
+           <div class="row">
+
+                <div class="col-md-6">
+                      <label for="city">Enter City :</label>
+                      <input type="text" class="form-control" id="city" >
+                </div>
+
+           </div>
+
+
+
+            <br>
+
+            <div class="row">
+
+                <div class="col-md-2">
+                     <button class="btn btn-outline-primary" id= "get_all_branches" >Get All Branches</button>
+                </div>
+
+            </div>
+
+
+
+            <br><br>
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+
+                  <ul class="list-group" id="all_branches_list">
+
+                  </ul>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+
+      <div class="tab-pane container fade" id="ifsc_tab">
+
+            <br>
+
+            <div class="row">
+
+                <div class="col-md-6">
+                      <label for="ifsc_code_inp">Enter IFSC code :</label>
+                      <input type="text" class="form-control" id="ifsc_code_inp" >
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="row">
+
+                <div class="col-md-2">
+                     <button class="btn btn-outline-primary" id= "get_branch_details" >Get Branch Details</button>
+                </div>
+
+            </div>
+
+
+
+            <br><br>
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                   <div class="card" id="response_card">
+                      <div class="card-body">
+                        <h4 class="card-title" id="data_title"> .. </h4>
+                        <p class="card-text" id="data_detail">
+                            ....
+                        </p>
+                        <a id="open_in_maps" href="#" class="card-link" target="_blank">Open in Maps (search)</a>
+                        <!--<a href="#" class="card-link">Another link</a>-->
+                      </div>
+                   </div>
+
+                </div>
+
+            </div>
+
+
+
+
+      </div>
+
+    </div>
+
+<br><br><br><br>
+
+
+
+
 {% endblock %}

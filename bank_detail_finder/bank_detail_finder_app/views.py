@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import (LoginRequiredMixin)
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import *
+from rest_framework.decorators import api_view
 
 import json
 from .models import Banks, Branches
@@ -55,3 +56,14 @@ class BranchListView(APIView):
 
         branches_serialized = BranchesSerializer(branches, many=True).data
         return Response(branches_serialized)
+
+
+
+@api_view(["GET"])
+def getbanks(request):
+    banks = Banks.objects.filter(name__icontains=request.GET.get("term", ""))[:8]
+    bank_name_list = []
+    for bank in banks:
+        bank_name_list.append(bank.name)
+
+    return HttpResponse(json.dumps(bank_name_list))
