@@ -77,29 +77,38 @@
                 if (this.readyState == 4 && this.status == 200) {
                     console.log(this.responseText);
 
-                    document.getElementById("all_branches_list").hidden = false;
+                    document.getElementById("accordion").hidden = false;
                     var res=JSON.parse(this.responseText);
 
                     var response_html_content = "";
                     $.each(res, function (i, v) {
-                                        //list += '<li class="page" id="'+i+'">' + '<a>' + v.name + '</a></li>'
-                        console.log(v);
-                        var item_details = "Branch : " + v['branch'] + "<br>" + "IFSC Code : " + v['ifsc'] + "<br>"  ;            //,, state
-                        item_details = item_details + "District : " + v['district'] + "<br>" + "Address : " + v['address'] + "<br>";
 
-                        var list_item= '<li class="list-group-item">' + item_details + '</li>' ;
 
-                        response_html_content = response_html_content + list_item;
-
+											var collapse_href = 'href="#collapse'+i+'"';
+											var branch_name = v['branch'];
+											var data_for_accordion =
+											'<div class="card">'
+											+'<div class="card-header">'
+											+'<div class="row">'
+											+'<div class="col-md-12">'
+											+'<div class="col-md-8 ">'
+											+'<h7 class="card-title">'
+											+'<a data-toggle="collapse"'+collapse_href+'>'
+											+'<strong>'+branch_name+'</strong></a></h7></div>'
+											+'</a></h4></div></div></div>'
+											+'<div id="collapse'+i+'" class="collapse" data-parent="#accordion">'
+											+'<div class="card-body">'
+											+'IFSC Code : ' + v['ifsc'] + '<br>'
+											+'District : ' + v['district'] + '<br>'
+											+'Address : ' + v['address'] + '<br>'
+											+'</div>'
+											+'<div class="card-footer" align="end"></div>'
+											+'</div></div><br>'
+											$('#accordion').append(data_for_accordion);
                     });
-
-                    document.getElementById('all_branches_list').innerHTML= response_html_content ;
-
-
-
                 }else{
 
-                    document.getElementById("all_branches_list").hidden = true;
+                    document.getElementById("accordion").hidden = true;
                     var res=JSON.parse(this.responseText);
 
 
