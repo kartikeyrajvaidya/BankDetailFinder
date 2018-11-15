@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'bank_detail_finder.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME' : "bank_detail_finder_db",
-        'USER': 'kartikey',
-        'PASSWORD': 'kartikey',
-        'HOST': 'localhost',
+        'NAME' : 'd5eilg60gvqbq6',
+        'USER': 'uflhenqejfrkyy',
+        'PASSWORD': '2a1f39e8fb3cdb91ae021db90529758cf1ead7c2054c2e1a070fcad206bb31db',
+        'HOST': 'ec2-54-235-193-0.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
