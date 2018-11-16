@@ -72,7 +72,7 @@ def getbanks(request):
 
 @api_view(["GET"])
 def getbranch(request):
-    branches = Branches.objects.filter(city__icontains=request.GET.get("term", ""))[:8]
+    branches = Branches.objects.filter(city__icontains=request.GET.get("term", ""))[:1]
     branch_city_list = []
     for branch in branches:
         branch_city_list.append(branch.city)
