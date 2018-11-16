@@ -2,8 +2,8 @@
 {% block bank_finder_content %}
 <br><br><br><br><br><br>
 <div style="color: #070707; font-family: Gill Sans; margin-left: 200px;">
-            <b><h1>Search Brach Detail By IFSC Or Bank Name</h1></b>
-          </div>
+    <b><h1>Search Branch Detail By IFSC Or Bank Name</h1></b>
+</div>
 <br><br><br><br><br><br>
   <div class="row">
           <button class="btn btn-lg btn-primary"  style="margin-left: 200px; padding-left: 2em !important;padding-right: 2em !important;"data-toggle="modal" data-target="#branch_modal"><b>Search By Bank Name</b></button>
@@ -12,7 +12,7 @@
 
 
       <div class="modal" id='branch_modal' >
-        <div class="modal-dialog" style="width:1250px;">
+        <div class="modal-dialog" style="width:3500px;">
           <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
@@ -22,15 +22,15 @@
             <br>
             <div class="modal-body">
               <div class="row">
-                <div class="col-md-6" style="margin-left: 120px;">
-                      <label for="bank_name"><b>Enter Bank name</b></label>
+                <div class="col-md-8" style="margin-left: 90px;">
+                      <label for="bank_name" style="margin-left: 80px;"><b>Enter Bank name</b></label>
                       <input type="text" class="form-control" id="bank_name" >
                 </div>
               </div>
               <br>
               <div class="row">
-                <div class="col-md-6" style="margin-left: 120px;">
-                      <label for="city"><b>Enter City :</b></label>
+                <div class="col-md-8" style="margin-left: 90px;">
+                      <label for="city" style="margin-left: 95px;"><b>Enter City</b></label>
                       <input type="text" class="form-control" id="city" >
                 </div>
               </div>
@@ -66,8 +66,8 @@
             <br>
             <div class="modal-body">
               <div class="row">
-                <div class="col-md-6" style="margin-left: 200px;">
-                      <label for="ifsc_code_inp"><b>Enter IFSC code :</b></label>
+                <div class="col-md-8" style="margin-left: 120px;">
+                      <label for="ifsc_code_inp"style="margin-left: 170px;"><b>Enter IFSC code :</b></label><br>
                       <input type="text" class="form-control" id="ifsc_code_inp" >
                 </div>
               </div>
@@ -87,7 +87,6 @@
                         <p class="card-text" id="data_detail">
                             ....
                         </p>
-                        <a id="open_in_maps" href="#" class="card-link" target="_blank">Open in Maps (search)</a>
                       </div>
                    </div>
                  </div>
