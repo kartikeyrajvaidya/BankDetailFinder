@@ -77,10 +77,10 @@
                 if (this.readyState == 4 && this.status == 200) {
                     console.log(this.responseText);
 
-                    document.getElementById("accordion").hidden = false;
+                  //  document.getElementById("accordion").hidden = false;
                     var res=JSON.parse(this.responseText);
 
-                    var response_html_content = "";
+										$('#cover_accordion').append('<div id="accordion"></div>');
                     $.each(res, function (i, v) {
 
 
@@ -108,7 +108,7 @@
                     });
                 }else{
 
-                    document.getElementById("accordion").hidden = true;
+                  //  document.getElementById("accordion").hidden = true;
                     var res=JSON.parse(this.responseText);
 
 
