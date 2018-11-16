@@ -1,1 +1,1 @@
-web: gunicorn bank_detail_finder.wsgi
+web: gunicorn bank_detail_finder.wsgi:application --log-file -
