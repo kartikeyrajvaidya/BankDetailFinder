@@ -76,7 +76,7 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     console.log(this.responseText);
-
+										$('#accordion').remove();
                   //  document.getElementById("accordion").hidden = false;
                     var res=JSON.parse(this.responseText);
 
