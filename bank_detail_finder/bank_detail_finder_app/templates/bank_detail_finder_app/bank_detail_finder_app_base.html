@@ -13,8 +13,11 @@
                source: "/bankfinder/getbanks",
                minLength: 2,
             });
+						$( "#city" ).autocomplete({
+							 source: "/bankfinder/getcity",
+							 minLength: 2,
+						});
          });
-
         document.getElementById("response_card").hidden = true;
 
         $("#get_branch_details").click(function(){

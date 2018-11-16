@@ -67,3 +67,14 @@ def getbanks(request):
         bank_name_list.append(bank.name)
 
     return HttpResponse(json.dumps(bank_name_list))
+
+
+
+@api_view(["GET"])
+def getbranch(request):
+    branches = Branches.objects.filter(city__icontains=request.GET.get("term", ""))[:8]
+    branch_city_list = []
+    for branch in branches:
+        branch_city_list.append(branch.city)
+
+    return HttpResponse(json.dumps(branch_city_list))
